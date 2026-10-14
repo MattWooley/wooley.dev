@@ -1,0 +1,16 @@
+---
+import { profile } from '../data/profile';
+
+const year = new Date().getUTCFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <p>© {year} {profile.name} · {profile.location.city}, {profile.location.region}</p>
+    <p>
+      <a href={`mailto:${profile.email}`}>{profile.email}</a>
+      <span aria-hidden="true"> · </span>
+      <a href={profile.linkedin} rel="me noopener" target="_blank">LinkedIn</a>
+    </p>
+  </div>
+</footer>

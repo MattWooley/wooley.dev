@@ -1,0 +1,146 @@
+# One entry per company; `roles` newest first. Never name Praxent's clients here.
+- id: praxent
+  company: Praxent
+  location: Houston, TX
+  roles:
+    - title: Technical Director
+      start: "2026-07"
+      end: null
+    - title: Associate Technical Director
+      start: "2025-04"
+      end: "2026-07"
+  summary: >-
+    Praxent is an AI transformation firm and Anthropic partner that builds software for banks, lenders,
+    insurers and other financial institutions. I take client prototypes to production and lead the
+    engineering group that delivers them.
+  highlights:
+    - >-
+      Took prototypes to production for three financial-services clients, starting from each client's
+      specific fintech problem and delivering the solution with the most benefit to them.
+    - >-
+      Introduced industry-standard API practices and designed a platform built to scale for a national
+      provider of IRA, HSA and retirement-plan services.
+    - >-
+      Responsible for the engineering group as a whole: partner with Praxent's AI enablement team so our
+      engineers are ready for every engagement we sign.
+    - >-
+      Claude Certified Architect – Foundations; trained at Anthropic's Basecamp in San Francisco; AI
+      enablement in Cartagena, Colombia.
+    - Known for transparency — clients know what we can and can't deliver before they commit.
+
+- id: headspring
+  company: Headspring, part of Accenture
+  location: Houston, TX
+  roles:
+    - title: Software Product and Platform Manager
+      start: "2022-04"
+      end: "2025-04"
+    - title: Principal Consultant
+      start: "2021-04"
+      end: "2022-03"
+  summary: >-
+    Successfully led a $6M, two-year project, overseeing the architecture, design, and implementation of a
+    legacy system modernization using modern technologies like .NET, AWS, ECS, Fargate, React, TypeScript,
+    and C#. Demonstrated exceptional leadership by mentoring team members, managing cross-functional teams,
+    and ensuring efficient budget utilization while delivering high-quality results.
+  highlights:
+    - >-
+      Directed the architecture and full system design of a $6M modernization project, migrating legacy
+      applications to cutting-edge technologies including AWS, ECS, and React, showcasing technical expertise
+      and leadership.
+    - >-
+      Mentored and managed a team of developers, fostering skill growth and collaboration, while ensuring the
+      project stayed on track and adhered to the budget over a two-year timeline.
+
+- id: gxm
+  company: GXM Consulting
+  location: Austin, TX
+  roles:
+    - title: Software Engineer
+      start: "2020-09"
+      end: "2021-04"
+  summary: >-
+    Full-stack developer providing custom software solutions using the latest web frameworks and graph
+    databases on Azure for Government using React, AKS, and Neo4J.
+  highlights:
+    - >-
+      Delivered custom software solutions leveraging modern web frameworks and graph databases, ensuring
+      high-performance applications.
+    - >-
+      Successfully implemented cloud-based deployments on Azure, optimizing scalability and reliability for
+      diverse projects.
+
+- id: bj-services
+  company: BJ Services
+  location: Tomball, TX
+  roles:
+    - title: Senior Software Engineer
+      start: "2020-03"
+      end: "2020-09"
+  summary: >-
+    Championed a new system for aggregating real-time metrics from the field, coordinating with 20
+    cross-functional staff to achieve stellar results while under strict deadlines and heavy workload.
+  highlights:
+    - >-
+      Used a distributed network of .NET Core Windows services that reliably fed data to a scalable platform
+      leveraging Azure platform technologies.
+    - >-
+      Provided guidance and led development of the data visualization and management platform using Blazor
+      and EF Core.
+
+- id: pds
+  company: PDS Americas
+  location: Houston, TX
+  roles:
+    - title: Senior WITSML Consultant
+      start: "2016-08"
+      end: "2020-03"
+  summary: >-
+    Provided key recommendations surrounding usage, design, and implementation of real-time technologies for
+    a global team ensuring the best possible use of a $1M year-over-year budget.
+  highlights:
+    - >-
+      Demonstrated superb communication skills in engaging from initial customer discussions to gathering
+      requirements and working with the developers to scope out the project deliverables and timelines,
+      recommending new practices that ensured all milestones were met despite emerging challenges.
+    - >-
+      Over-delivered on lofty goals as a lead developer to guide staff on proper use and avoidances of WITSML
+      and real-time technologies, including authoring a handbook and implementing a wide array of SOPs.
+    - >-
+      Provided custom-tailored training and support documentation to internal support teams and customers,
+      and worked as the principal contact with senior leadership to convey current project status.
+
+- id: baker-hughes
+  company: Baker Hughes
+  location: Houston, TX
+  roles:
+    - title: Operational Intelligence Lead
+      start: "2011-10"
+      end: "2016-08"
+  summary: >-
+    Selected to handle additional duties, guiding T2 & T3 troubleshooting while also delivering top-tier
+    results within an application development and consulting position.
+  highlights:
+    - >-
+      Expanded expertise with all processes for installing/configuring WITSML rig aggregation systems, and
+      partnered with management to improve procedures that saved >600 hours a month.
+    - Provided valuable insights into data optimization/WITSML system configuration for $10M in revenue.
+    - >-
+      Built best-in-class .NET applications to tackle day-to-day operational and business problems with
+      real-time data, supporting strategic decision making that uncovered $2M in revenue through automation.
+
+- id: lakota
+  company: Lakota Data
+  location: Houston, TX
+  roles:
+    - title: Network Infrastructure Specialist
+      start: "2009-09"
+      end: "2010-05"
+  summary: Managed multiple servers and supported an environment of continuous improvement.
+  highlights:
+    - >-
+      Created a new PHP/MySQL-based tool for maintaining customer information and credentials for 20+
+      end-users, and worked as an internal consultant to scale tools across data management projects.
+    - >-
+      Received praise after aiding in installing an 80 kVA UPS for new customers, wiring new circuits and
+      outlets while maintaining complete safety.

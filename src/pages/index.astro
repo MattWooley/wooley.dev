@@ -1,0 +1,110 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import avatar from '../assets/avatar.png';
+import { profile } from '../data/profile';
+import Base from '../layouts/Base.astro';
+
+const highlights = (await getCollection('highlights')).sort((a, b) => a.data.order - b.data.order);
+const skills = (await getCollection('skills')).sort((a, b) => a.data.order - b.data.order);
+const certifications = (await getCollection('certifications')).sort((a, b) => a.data.order - b.data.order);
+const education = await getCollection('education');
+const recognition = (await getCollection('recognition')).sort((a, b) => b.data.year - a.data.year);
+const [award] = recognition;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: profile.name,
+  jobTitle: profile.title,
+  worksFor: { '@type': 'Organization', name: profile.employer.name, url: profile.employer.url },
+  award: recognition.map((r) => `${r.data.name}, ${r.data.issuer} (${r.data.year})`),
+  description: profile.summary,
+  url: Astro.site?.href,
+  email: `mailto:${profile.email}`,
+  image: new URL('/og/home.png', Astro.site).href,
+  address: { '@type': 'PostalAddress', addressLocality: profile.location.city, addressRegion: profile.location.region, addressCountry: 'US' },
+  sameAs: [profile.linkedin],
+  alumniOf: [...new Set(education.map((e) => e.data.school))].map((name) => ({ '@type': 'CollegeOrUniversity', name })),
+  hasCredential: certifications.map((c) => ({
+    '@type': 'EducationalOccupationalCredential',
+    name: c.data.name,
+    recognizedBy: { '@type': 'Organization', name: c.data.issuer },
+  })),
+  knowsAbout: skills.flatMap((s) => s.data.items).slice(0, 20),
+};
+---
+
+<Base og="home" jsonLd={jsonLd}>
+  <section class="hero container">
+    <Image src={avatar} alt={profile.name} width={176} height={176} loading="eager" fetchpriority="high" class="hero__avatar" />
+    <div class="hero__text">
+      <p class="eyebrow">{profile.title} · <a href={profile.employer.url} rel="noopener" target="_blank">{profile.employer.name}</a></p>
+      <h1>{profile.name}</h1>
+      <p class="hero__tagline">{profile.tagline}</p>
+      <p class="hero__meta">{profile.location.city}, {profile.location.region}</p>
+      <div class="actions">
+        <a class="button button--primary" href={`mailto:${profile.email}`}>Email me</a>
+        <a class="button" href="/resume/">View résumé</a>
+        <a class="button" href={profile.linkedin} rel="me noopener" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container section" aria-labelledby="highlights-title">
+    <h2 id="highlights-title">Career highlights</h2>
+    <ul class="highlights" role="list">
+      {
+        highlights.map(({ data }) => (
+          <li class="card highlight">
+            <span class="highlight__metric">{data.metric}</span>
+            <p>{data.text}</p>
+          </li>
+        ))
+      }
+    </ul>
+    {
+      award?.data.quote && (
+        <figure class="card recognition">
+          <blockquote>
+            <p>“{award.data.quote}.”</p>
+          </blockquote>
+          <figcaption>
+            From the nomination for <strong>{award.data.name}</strong>, {award.data.issuer}'s peer-voted award for
+            living its core values ({award.data.year})
+          </figcaption>
+        </figure>
+      )
+    }
+  </section>
+
+  <section class="container section about" aria-labelledby="about-title">
+    <h2 id="about-title">Who is <span class="mammoth" role="img" aria-label="a mammoth">🦣</span>?</h2>
+    {profile.about.map((paragraph) => <p>{paragraph}</p>)}
+  </section>
+
+  <section class="container section" aria-labelledby="toolbox-title">
+    <h2 id="toolbox-title">Toolbox</h2>
+    <div class="toolbox">
+      {
+        skills.map(({ data }) => (
+          <div class="card">
+            <h3>{data.category}</h3>
+            <ul class="chips" role="list">
+              {data.items.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="container section cta" aria-labelledby="cta-title">
+    <h2 id="cta-title">Let's connect</h2>
+    <p>The big picture, the details, and a positive vibe along the way. I'm one email away.</p>
+    <div class="actions actions--center">
+      <a class="button button--primary" href={`mailto:${profile.email}`}>{profile.email}</a>
+      <a class="button" href="/resume/">Full résumé</a>
+    </div>
+  </section>
+</Base>

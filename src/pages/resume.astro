@@ -1,0 +1,158 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import { profile } from '../data/profile';
+import Base from '../layouts/Base.astro';
+import { byMostRecent, formatSpan, formatYearMonth, tenure } from '../lib/dates';
+
+const experience = (await getCollection('experience')).sort(byMostRecent);
+const education = (await getCollection('education')).sort((a, b) => b.data.year - a.data.year);
+const certifications = (await getCollection('certifications')).sort((a, b) => a.data.order - b.data.order);
+const skills = (await getCollection('skills')).sort((a, b) => a.data.order - b.data.order);
+const recognition = (await getCollection('recognition')).sort((a, b) => b.data.year - a.data.year);
+---
+
+<Base title="Résumé" og="resume" description={`Résumé of ${profile.name}: ${profile.summary}`}>
+  <article class="container resume">
+    <header class="resume__header">
+      <div>
+        <h1>{profile.name}</h1>
+        <p class="resume__title">{profile.title}, {profile.employer.name}</p>
+        <p class="resume__contact">
+          {profile.location.city}, {profile.location.region}
+          <span aria-hidden="true"> · </span><a href={`mailto:${profile.email}`}>{profile.email}</a>
+          <span aria-hidden="true"> · </span><a href={profile.linkedin} rel="me noopener" target="_blank">LinkedIn</a>
+          <span aria-hidden="true"> · </span><a href="https://wooley.dev">wooley.dev</a>
+        </p>
+      </div>
+      <button class="button no-print" type="button" data-action="print">Print / save as PDF</button>
+    </header>
+
+    <section aria-labelledby="summary-title">
+      <h2 id="summary-title">Summary</h2>
+      <p>{profile.resumeSummary}</p>
+    </section>
+
+    <section aria-labelledby="experience-title">
+      <h2 id="experience-title">Experience</h2>
+      <ol class="timeline" role="list">
+        {
+          experience.map(({ data }) => {
+            const [only] = data.roles;
+            const single = data.roles.length === 1 && only !== undefined;
+            return (
+              <li class="job">
+                <div class="job__head">
+                  <h3>{single ? only.title : data.company}</h3>
+                  <p class="job__when">{formatSpan(tenure(data.roles))}</p>
+                </div>
+                <p class="job__where">{single ? `${data.company} · ${data.location}` : data.location}</p>
+                {!single && (
+                  <ol class="roles" role="list">
+                    {data.roles.map((r) => (
+                      <li>
+                        <span class="roles__title">{r.title}</span>
+                        <span class="roles__when">{formatSpan(r)}</span>
+                      </li>
+                    ))}
+                  </ol>
+                )}
+                <p>{data.summary}</p>
+                <ul>
+                  {data.highlights.map((h) => (
+                    <li>{h}</li>
+                  ))}
+                </ul>
+              </li>
+            );
+          })
+        }
+      </ol>
+      <h3 class="earlier-title">Earlier</h3>
+      <ul class="earlier">
+        {profile.earlierRoles.map((role) => <li>{role}</li>)}
+      </ul>
+    </section>
+
+    <div class="resume__grid">
+      <section aria-labelledby="certs-title">
+        <h2 id="certs-title">Certifications</h2>
+        <ul class="plain certs" role="list">
+          {
+            certifications.map(({ data }) => (
+              <li>
+                {data.badge && <Image src={data.badge} alt="" width={56} height={56} class="cert__badge" />}
+                <span>
+                  <strong>{data.name}</strong>
+                  <br />
+                  {data.issuer}
+                  {data.issued && ` · ${formatYearMonth(data.issued)}`}
+                  {data.verifyUrl && (
+                    <>
+                      {' · '}
+                      <a href={data.verifyUrl} rel="noopener" target="_blank">
+                        verify
+                      </a>
+                    </>
+                  )}
+                </span>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <section aria-labelledby="education-title">
+        <h2 id="education-title">Education</h2>
+        <ul class="plain" role="list">
+          {
+            education.map(({ data }) => (
+              <li>
+                <strong>{data.degree}</strong>
+                <br />
+                {data.school}, {data.year}
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </div>
+
+    <section aria-labelledby="recognition-title">
+      <h2 id="recognition-title">Recognition</h2>
+      <ul class="plain" role="list">
+        {
+          recognition.map(({ data }) => (
+            <li>
+              <strong>{data.name}</strong>, {data.issuer}, {data.year}
+              <br />
+              {data.description}
+              {data.quote && (
+                <>
+                  {' '}
+                  Nominated for creating “{data.quote}.”
+                </>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section aria-labelledby="skills-title">
+      <h2 id="skills-title">Skills</h2>
+      <dl class="skills">
+        {
+          skills.map(({ data }) => (
+            <>
+              <dt>{data.category}</dt>
+              <dd>{data.items.join(', ')}</dd>
+            </>
+          ))
+        }
+        <dt>Expertise</dt>
+        <dd>{profile.expertise.join(', ')}</dd>
+      </dl>
+    </section>
+  </article>
+</Base>

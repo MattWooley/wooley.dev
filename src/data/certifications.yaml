@@ -1,0 +1,20 @@
+- id: claude-cca-f
+  order: 1
+  name: Claude Certified Architect – Foundations
+  issuer: Anthropic
+  issued: "2026-09"
+  verifyUrl: https://www.credly.com/badges/9c6d4c3f-ecf3-4fbc-95a1-fff7f08ee706
+  badge: ../assets/claude-cca-f-badge.png
+
+- id: aws-sa-pro
+  order: 2
+  name: AWS Certified Solutions Architect – Professional
+  issuer: Amazon Web Services
+  issued: "2025-02"
+  verifyUrl: https://www.credly.com/badges/c0b84dfc-8c15-47d2-8e29-223ac98df74d
+  badge: ../assets/aws-sa-pro-badge.png
+
+- id: psd
+  order: 3
+  name: Professional Scrum Developer
+  issuer: Scrum.org

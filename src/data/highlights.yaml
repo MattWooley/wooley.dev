@@ -1,0 +1,27 @@
+- id: client-trust
+  order: 1
+  metric: Trust first
+  text: >-
+    Clients always know what we can and can't deliver before they commit. That candor is how I take
+    financial-services prototypes to production at Praxent, and why clients keep trusting the plan.
+
+- id: modernization
+  order: 2
+  metric: $6M
+  text: >-
+    Architected and implemented a modernization of a legacy monolith for a state agency to an AWS ECS
+    solution with event sourcing, analytics, and scalability on a $6M budget.
+
+- id: enterprise-dotnet
+  order: 3
+  metric: $2M
+  text: >-
+    Designed and developed enterprise-level systems leveraging .NET and related platforms, positively
+    impacting $2M in revenue.
+
+- id: open-standard
+  order: 4
+  metric: Global impact
+  text: >-
+    Noted for essential contributions to an open-source industry data standard adopted by companies
+    globally, gaining a superb reputation for knowledge in responsive, testable, and scalable code.

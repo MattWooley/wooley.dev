@@ -1,0 +1,19 @@
+- id: technologies
+  order: 1
+  category: Technologies
+  items: [Event-driven architecture, C#, .NET, ASP.NET, Blazor, React, Angular, TypeScript, Vite, AWS Lambda, Java, Entity Framework, LINQ, SignalR, WebSockets, MQTT, SOAP, WPF, VSTO, MVC, ORM]
+
+- id: cloud
+  order: 2
+  category: Cloud
+  items: [AWS, Azure, GCP]
+
+- id: databases
+  order: 3
+  category: Databases
+  items: [MS SQL Server, Postgres, MongoDB, Oracle, MySQL, Neo4j, OSIsoft PI, OPC]
+
+- id: tools
+  order: 4
+  category: Tools
+  items: [Rider, Visual Studio, VS Code, ReSharper, Git, GitHub, Azure DevOps, TFS, Jira, Postman, SoapUI, Wireshark]
