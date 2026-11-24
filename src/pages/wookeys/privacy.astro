@@ -1,0 +1,21 @@
+---
+import Base from '../../layouts/Base.astro';
+import { profile } from '../../data/profile';
+---
+
+<Base title="WooKeys Privacy Policy" og="home" description="WooKeys collects no data. Nothing you type leaves your iPhone.">
+  <article class="container section prose">
+    <h1>WooKeys Privacy Policy</h1>
+    <p><em>Last updated November 23, 2026</em></p>
+    <p>WooKeys is a keyboard for iPhone. It does not collect, upload, sell or share any of your data.</p>
+    <ul>
+      <li><strong>No data leaves your device.</strong> WooKeys makes no network connections. It has no analytics, no advertising and no third-party SDKs.</li>
+      <li><strong>What you type stays on your iPhone.</strong> To learn your words and improve suggestions, WooKeys keeps a list of words you use and your settings on your device, shared only between the WooKeys app and the WooKeys keyboard.</li>
+      <li><strong>Why Allow Full Access.</strong> iOS requires it for the keyboard to read the settings you choose in the app, show a paste button for things you just copied and play key haptics. WooKeys never uses it to send anything anywhere.</li>
+      <li><strong>Diagnostics.</strong> The app can build a troubleshooting report. It is only copied to your clipboard when you tap the button, and you decide whether to share it.</li>
+      <li><strong>GIF button.</strong> It opens the Giphy app if you have it installed. WooKeys sends nothing to Giphy.</li>
+    </ul>
+    <p>Deleting WooKeys removes all of its data from your device.</p>
+    <p>Questions: <a href={`mailto:${profile.email}`}>{profile.email}</a> · <a href="/wookeys/support/">Support</a></p>
+  </article>
+</Base>

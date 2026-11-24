@@ -1,0 +1,19 @@
+---
+import Base from '../../layouts/Base.astro';
+import { profile } from '../../data/profile';
+---
+
+<Base title="WooKeys Support" og="home" description="Set up the WooKeys keyboard and get help.">
+  <article class="container section prose">
+    <h1>WooKeys Support</h1>
+    <h2>Set up the keyboard</h2>
+    <ol>
+      <li>Open Settings → General → Keyboard → Keyboards → Add New Keyboard… and choose <strong>WooKeys</strong>.</li>
+      <li>Tap <strong>WooKeys</strong> in that list and turn on <strong>Allow Full Access</strong> so the keyboard can use your settings from the app.</li>
+      <li>In any text field, hold the globe key and pick WooKeys.</li>
+    </ol>
+    <h2>Something not working?</h2>
+    <p>Open the WooKeys app, go to Troubleshooting and copy the diagnostics report. Email it to <a href={`mailto:${profile.email}?subject=WooKeys`}>{profile.email}</a> with a short description of the problem. The report holds nothing you typed.</p>
+    <p><a href="/wookeys/privacy/">Privacy policy</a></p>
+  </article>
+</Base>
